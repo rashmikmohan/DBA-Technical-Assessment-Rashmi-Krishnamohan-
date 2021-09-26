@@ -4,6 +4,7 @@ F8th Inc Technical Interview
 MySQL commands for technical interview:
 
 %Created tabke for country_name as primary key that references to the country column in dbatest.citizen table 
+
 CREATE TABLE `dbatest`.`country` (
   `id` INT NOT NULL,
   `country_name` VARCHAR(45) NULL,
@@ -11,6 +12,7 @@ CREATE TABLE `dbatest`.`country` (
   PRIMARY KEY (`id`));
   
   %add foreign key constraint to column country in dbatest.citizen 
+  
   ALTER TABLE `dbatest`.`citizen` 
 ADD CONSTRAINT `FK_Country`
   FOREIGN KEY (`country`)
@@ -20,6 +22,7 @@ ADD CONSTRAINT `FK_Country`
   
   
   % trigger count of dbatest.country to increment after any insert occurs
+  
   DROP TRIGGER IF EXISTS `dbatest`.`citizen_AFTER_INSERT`;
 
 DELIMITER $$
@@ -32,6 +35,7 @@ DELIMITER ;
 
 
 %store proc to provide citizen details of country that is called and reset the count to 0.
+
 CREATE PROCEDURE `Get_CitizenName` ( IN countryName varchar(25))
 BEGIN
 select * from dbatest.citizen where country IN 
